@@ -1,6 +1,6 @@
 import numpy as np
 
-from Utils.utils import generate_metrics_given_config, merge_metrics, save_numpy_results, save_csv_results
+from Utils.utils import generate_metrics_given_config, merge_metrics, save_evaluation, save_model, make_save_path
 from Utils.data_utils import *
 from Model.model_wrapper import *
 
@@ -60,26 +60,21 @@ class Model:
         train_result = self.model.fit(self.train_performance, self.train_parameter, self.test_performance, self.test_parameter)
         return train_result
     
-    def eval(self):
+    def eval(self, save_folder):
 
         test_parameter_prediction = self.model.predict(self.test_performance)
         train_parameter_prediction = self.model.predict(self.train_performance)
+
         inverse_test_parameter, inverse_test_performance = inverse_transform(test_parameter_prediction, self.test_performance, self.scaler)
         inverse_train_parameter, inverse_train_performance = inverse_transform(train_parameter_prediction, self.train_performance, self.scaler)
 
-        self.save_evaluation(inverse_train_parameter, inverse_train_performance, inverse_test_parameter, inverse_test_performance)
+        save_evaluation(inverse_train_parameter, inverse_train_performance, 
+                        inverse_test_parameter, inverse_test_performance, 
+                        self.data_config, self.train_config, 
+                        save_folder)
+
+    def reset(self):
         self.model.reset()
-
-    def save_evaluation(self, inverse_train_parameter, inverse_train_performance, inverse_test_parameter, inverse_test_performance):
-
-        if self.train_config["save_format"] == "csv":
-            save_csv_results(inverse_test_parameter, inverse_test_performance, "test.csv", self.data_config, self.train_config["model_name"])
-            save_csv_results(inverse_train_parameter, inverse_train_performance, "train.csv", self.data_config, self.train_config["model_name"])
-        elif self.train_config["save_format"] == "numpy":
-            save_numpy_results(inverse_test_parameter, "test_x.npy", self.data_config, self.train_config["model_name"])
-            save_numpy_results(inverse_test_performance, "test_y.npy", self.data_config, self.train_config["model_name"])
-            save_numpy_results(inverse_train_parameter, "train_x.npy", self.data_config, self.train_config["model_name"])
-            save_numpy_results(inverse_train_performance, "train_y.npy", self.data_config, self.train_config["model_name"])
 
 
 class ModelPipeline:
@@ -105,6 +100,7 @@ class ModelPipeline:
 
         subset = self.train_config["subset"]
         metrics_dict = generate_metrics_given_config(self.train_config)
+        save_folder = make_save_path(self.data_config.arguments["out"], self.train_config["model_name"])
         
         for index, percentage in enumerate(subset):
             print("Running with percentage {}".format(percentage))
@@ -131,10 +127,15 @@ class ModelPipeline:
                                                 new_test_parameter, new_test_performance, self.data_config, self.scaler)
                 
                 subset_kfold_metrics_dict = eval_model.train()
-                eval_model.eval()
+                eval_model.eval(save_folder)
                 
                 merge_metrics(kfold_metrics_dict, subset_kfold_metrics_dict)
                 merge_metrics(subset_metrics_dict, kfold_metrics_dict)
+
+                if self.train_config["save_model"]:
+                    save_model(eval_model.model, eval_model.scaler, save_folder)
+                    
+                eval_model.reset()
 
             merge_metrics(metrics_dict, subset_metrics_dict)
         return metrics_dict

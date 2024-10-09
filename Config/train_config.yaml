@@ -11,3 +11,4 @@ compare_method: False
 kfold: False
 independent_kfold: True
 save_format: csv
+save_model: True

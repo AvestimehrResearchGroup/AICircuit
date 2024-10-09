@@ -6,6 +6,7 @@ from torch.cuda import is_available
 import shutil
 import pandas as pd
 import torch
+import pickle
 
 
 CONFIG_PATH = join(os.path.join(os.getcwd(), "Config"))
@@ -127,19 +128,13 @@ def save_result(result, pipeline_save_name, config_path=None):
         shutil.copyfile(config_path, join(save_folder, "train_config.yaml"))
 
 
-def save_numpy_results(array, save_name, data_config, model_name):  
-
-    save_folder = join(os.getcwd(), data_config.arguments["out"], model_name)
-    os.makedirs(save_folder, exist_ok=True)
+def save_numpy_results(array, save_name, save_folder):  
 
     path = join(save_folder, save_name)
     np.save(path, array)
     
 
-def save_csv_results(x, y, save_name, data_config, model_name):
-
-    save_folder = join(os.getcwd(), data_config.arguments["out"], model_name)
-    os.makedirs(save_folder, exist_ok=True)
+def save_csv_results(x, y, save_name, data_config, save_folder):
 
     df = pd.DataFrame(columns=data_config.parameter_list + data_config.performance_list)
 
@@ -242,3 +237,36 @@ def make_plot_folder(pipeline_save_name):
     save_folder = join(DEFAULT_PLOT_FOLDER_PATH, pipeline_save_name)
     os.makedirs(save_folder)
     return save_folder
+
+
+def save_model(model, scaler, save_folder):
+
+    filename = join(save_folder, 'model.pkl')
+    with open(filename, 'wb') as f:
+        pickle.dump(model, f)
+
+    filename = join(save_folder, 'scaler.pkl')
+    with open(filename, 'wb') as f:
+        pickle.dump(scaler, f)
+
+
+def make_save_path(data_name, model_name):
+
+    save_folder = join(os.getcwd(), data_name, model_name)
+    os.makedirs(save_folder, exist_ok=True)
+    return save_folder
+
+
+def save_evaluation(inverse_train_parameter, inverse_train_performance, 
+                    inverse_test_parameter, inverse_test_performance, 
+                    data_config, train_config, 
+                    save_folder):
+
+        if train_config["save_format"] == "csv":
+            save_csv_results(inverse_test_parameter, inverse_test_performance, "test.csv", data_config, save_folder)
+            save_csv_results(inverse_train_parameter, inverse_train_performance, "train.csv", data_config, save_folder)
+        elif train_config["save_format"] == "numpy":
+            save_numpy_results(inverse_test_parameter, "test_x.npy", save_folder)
+            save_numpy_results(inverse_test_performance, "test_y.npy", save_folder)
+            save_numpy_results(inverse_train_parameter, "train_x.npy", save_folder)
+            save_numpy_results(inverse_train_performance, "train_y.npy", save_folder)
