@@ -127,21 +127,21 @@ def save_result(result, pipeline_save_name, config_path=None):
         shutil.copyfile(config_path, join(save_folder, "train_config.yaml"))
 
 
-def save_numpy_results(array, save_name, simulator, model_name):  
+def save_numpy_results(array, save_name, data_config, model_name):  
 
-    save_folder = join(os.getcwd(), simulator.arguments["out"], model_name)
+    save_folder = join(os.getcwd(), data_config.arguments["out"], model_name)
     os.makedirs(save_folder, exist_ok=True)
 
     path = join(save_folder, save_name)
     np.save(path, array)
     
 
-def save_csv_results(x, y, save_name, simulator, model_name):
+def save_csv_results(x, y, save_name, data_config, model_name):
 
-    save_folder = join(os.getcwd(), simulator.arguments["out"], model_name)
+    save_folder = join(os.getcwd(), data_config.arguments["out"], model_name)
     os.makedirs(save_folder, exist_ok=True)
 
-    df = pd.DataFrame(columns=simulator.parameter_list + simulator.performance_list)
+    df = pd.DataFrame(columns=data_config.parameter_list + data_config.performance_list)
 
     for i in range(x.shape[0]):
         df.loc[i] = list(x[i]) + list(y[i])
