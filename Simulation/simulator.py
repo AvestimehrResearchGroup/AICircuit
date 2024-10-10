@@ -65,6 +65,8 @@ class Simulator:
                 else:
                     cur_sim_result[metric] = value
                     cur_sim_result['Error_'+metric] = 0
+                    cur_sim_result[metric + '_GroundTruth'] = 0
+                    
         self.sim_results.append(cur_sim_result)
 
 
@@ -91,7 +93,7 @@ class Simulator:
                 # calculate relative error
                 self.calc_error(line)
 
-                if display and i > 10 and i % 50 == 0:
+                if display and i > 10 and (i+1) % 50 == 0:
                     print('{} points simulated.'.format(i+1))
 
                 if n != -1 and i == n - 1: break
@@ -102,9 +104,10 @@ class Simulator:
         :param perf_ref: reference performance
         """
         for key in self.sim_results[-1]:
-            if 'Error' not in key:  # only check actual values, not error
+            if 'Error' not in key and 'GroundTruth' not in key:  # only check actual values, not error
                 val_actual = self.sim_results[-1][key]
                 val_ref = float(perf_ref[key])
+                val_ref_save = val_ref
 
                 if 'VoltageGain' in key:
                     val_actual = 10 ** (val_actual / 20)
@@ -118,6 +121,7 @@ class Simulator:
                     rel_error = abs(val_ref - val_actual) / abs(val_ref)
 
                 self.sim_results[-1]['Error_' + key] = rel_error
+                self.sim_results[-1][key + '_GroundTruth'] = val_ref_save
 
 
 def alter_circ_param(new_params_values, ocean_path):
