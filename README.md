@@ -13,7 +13,7 @@ AICircuit is a comprehensive multi-level dataset and benchmark for developing an
     * [Description](#description)
     * [Results](#results)
   * [Visualization](#-visualization)
-  * [Documentation](#-documentation)
+  * [Paper](#-paper)
   * [Citation](#-citation)
   * [Where to Ask for Help](#-where-to-ask-for-help)
 
@@ -99,9 +99,11 @@ For **Transmitter**:
 
 <img align="center" src="Images/Transmitter.png">
 
-## 📚 Documentation
+## 📚 Paper
   
-  For more details, visit our paper [here](https://arxiv.org/abs/2407.18272).
+  "AICircuit: A Multi-Level Dataset and Benchmark for AI-Driven Analog Integrated Circuit Design", by A. Mehradfar, X. Zhao, Y. Niu, S. Babakniya, M. Alesheikh, H. Aghasi, and S. Avestimehr, arxiv: 2407.18272, 2024. 
+  * [Link to paper](https://arxiv.org/abs/2407.18272).
+  * Preliminary version to appear in [Machine Learning and the Physical Sciences at NeurIPS 2024](https://ml4physicalsciences.github.io/2024/). 
 
 ## 🎯 Citation 
 
