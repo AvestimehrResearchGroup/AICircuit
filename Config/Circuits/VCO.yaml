@@ -7,11 +7,11 @@ parameter_list:
   - Wn6
   - Wvar
 performance_list:
-  - Oscillation Frequency
-  - Power Consumption
-  - Output Power
-  - Phase Noise
-  - Tuning Range
+  - OscillationFrequency
+  - PowerConsumption
+  - OutputPower
+  - PhaseNoise
+  - TuningRange
 arguments:
   input: Dataset/VCO
   out: Dataset/VCO

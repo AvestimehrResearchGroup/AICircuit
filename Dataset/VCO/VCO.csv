@@ -1,4 +1,4 @@
-C1,L1,Rp,Wn,Wn5,Wn6,Wvar,Oscillation Frequency,Power Consumption,Output Power,Phase Noise,Tuning Range
+C1,L1,Rp,Wn,Wn5,Wn6,Wvar,OscillationFrequency,PowerConsumption,OutputPower,PhaseNoise,TuningRange
 1.5e-13,4e-09,1000.0,2e-06,1.1e-05,3.2e-06,4e-06,3520000000.0,0.00681,17.41,-98.16,286000000.0
 1.5e-13,4e-09,1000.0,2e-06,1.1e-05,3.2e-06,3e-06,3680000000.0,0.00681,17.53,-96.13,2760000.0
 1.5e-13,4e-09,1000.0,2e-06,1.1e-05,3.2e-06,4.5e-06,3450000000.0,0.00681,17.38,-95.65,304000000.0
