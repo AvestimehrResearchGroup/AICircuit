@@ -1,4 +1,4 @@
-C,R,WLO,WRF,PowerConsumption,IFVoltage Swing,ConversionGain,NoiseFigure
+C,R,WLO,WRF,PowerConsumption,IFVoltageSwing,ConversionGain,NoiseFigure
 1e-12,350,1e-05,2e-05,0.00737,0.00341,5.644,8.192
 1e-12,350,1e-05,1.6e-05,0.00737,0.00316,5.034,8.276
 1e-12,350,1e-05,1.8e-05,0.00737,0.0033,5.379,8.216
