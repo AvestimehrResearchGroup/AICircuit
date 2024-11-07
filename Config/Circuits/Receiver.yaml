@@ -14,15 +14,15 @@ parameter_list:
   - Wn1_Amp
   - Wn2_Amp
 performance_list:
-  - dcPowerConsumption_System
-  - VoltageGain_System_Value
-  - NoiseFigure_System_Value
-  - PowerGain_LNA/dB
-  - NoiseFigure_LNA/dB
-  - S11_LNA/dB
-  - ConversionGain_Mixer/dB
-  - VoltageSwing_Mixer/V
-  - VoltageGain_Amp/dB
+  - PowerConsumption
+  - VoltageGain
+  - NoiseFigure
+  - PowerGain_LNA
+  - NoiseFigure_LNA
+  - S11_LNA
+  - ConversionGain_Mixer
+  - VoltageSwing_Mixer
+  - VoltageGain_Amp
 arguments:
   input: Dataset/Receiver
   out: Dataset/Receiver
