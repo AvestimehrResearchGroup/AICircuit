@@ -8,12 +8,12 @@ import subprocess
 
 # DOCKER_CMD = 'docker exec --user=julien rlinux8-1 /bin/tcsh -c -v /home/asal/AICircuit/Simulation:./'
 DOCKER_CMD = 'docker exec --user=asal rlinux8-2 /bin/tcsh -c'
-OCEAN_FILENAME = 'oceanScript.ocn'
+# OCEAN_FILENAME = 'oceanScript.ocn'
 
 
 class Simulator:
     
-    def __init__(self, circuit_path, circuit_path_docker, circuit_params, params_path):
+    def __init__(self, circuit_path, circuit_path_docker, circuit_params, params_path, ocean_filename):
         """
         :param circuit_path: circuit path in a host system
         :param circuit_path_docker: circuit path inside a docker container
@@ -21,7 +21,7 @@ class Simulator:
         :param params_path: circuit parameter value path
         """
         self.circuit_path = circuit_path
-        self.circuit_def = circuit_path + '/' + OCEAN_FILENAME
+        self.circuit_def = circuit_path + '/' + ocean_filename
         self.circuit_params = circuit_params
         self.params_path = params_path
         
