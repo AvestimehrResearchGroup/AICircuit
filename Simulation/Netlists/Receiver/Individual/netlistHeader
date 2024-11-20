@@ -1,0 +1,7 @@
+// Generated for: spectre
+// Generated on: Apr 23 23:17:47 2024
+// Design library name: Receiver
+// Design cell name: Receiver_System_IndividualMetrics
+// Design view name: schematic
+simulator lang=spectre
+global 0

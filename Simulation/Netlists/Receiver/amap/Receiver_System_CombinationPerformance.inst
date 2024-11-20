@@ -1,0 +1,13 @@
+HEADER
+"PSFversion" "1.00"
+"I1n" "Gilbert_Cell"
+"I2n" "Cascode"
+"I7n I4n I3n" "rfLib_balun_veriloga"
+"C11n C10n C7n C6n C1n C0n" "analogLib_cap_spectre"
+"PORT2n PORT1n" "analogLib_port_spectre"
+"PORT1n" "Receiver_System_CombinationPerformance"
+"PORT0n" "analogLib_port_spectre"
+"PORT0n" "Receiver_System_CombinationPerformance"
+"L6n L7n L1n L0n" "analogLib_ind_spectre"
+"R1n R0n" "analogLib_res_spectre"
+"I0n" "LNA"
