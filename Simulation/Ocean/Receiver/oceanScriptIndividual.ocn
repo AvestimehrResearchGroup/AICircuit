@@ -1,5 +1,5 @@
 simulator( 'spectre )
-design(	 "/home/asal/Shared/Netlists/Receiver/netlist")
+design(	 "/home/asal/Shared/Netlists/Receiver/Individual/netlist")
 resultsDir( "/home/asal/Shared/Results/Receiver" )
 modelFile( 
     '("/home/asal/Shared/Model/45n270AModels.sp" "")
