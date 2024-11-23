@@ -115,7 +115,7 @@ If you use AICircuit in a research paper, please cite our work as follows:
       author={Asal Mehradfar and Xuzhe Zhao and Yue Niu and Sara Babakniya and Mahdi Alesheikh and Hamidreza Aghasi and Salman Avestimehr},
       journal={Machine Learning and the Physical Sciences Workshop @ NeurIPS},
       year={2024},
-      url={https://arxiv.org/abs/2407.18272}, 
+      url={https://arxiv.org/abs/2407.18272}
 }
 ```
 
