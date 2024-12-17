@@ -103,7 +103,7 @@ For **Transmitter**:
   
   "AICircuit: A Multi-Level Dataset and Benchmark for AI-Driven Analog Integrated Circuit Design", by A. Mehradfar, X. Zhao, Y. Niu, S. Babakniya, M. Alesheikh, H. Aghasi, and S. Avestimehr, arxiv: 2407.18272, 2024. 
   * [Paper](https://arxiv.org/abs/2407.18272)
-  * Preliminary version to appear in [Machine Learning and the Physical Sciences at NeurIPS 2024](https://ml4physicalsciences.github.io/2024/)
+  * Preliminary version in [Machine Learning and the Physical Sciences at NeurIPS 2024](https://ml4physicalsciences.github.io/2024/)
 
 ## 🎯 Citation 
 
@@ -114,8 +114,7 @@ If you use AICircuit in a research paper, please cite our work as follows:
       title={AICircuit: A Multi-Level Dataset and Benchmark for AI-Driven Analog Integrated Circuit Design}, 
       author={Asal Mehradfar and Xuzhe Zhao and Yue Niu and Sara Babakniya and Mahdi Alesheikh and Hamidreza Aghasi and Salman Avestimehr},
       journal={Machine Learning and the Physical Sciences Workshop @ NeurIPS},
-      year={2024},
-      url={https://arxiv.org/abs/2407.18272}
+      year={2024}
 }
 ```
 
