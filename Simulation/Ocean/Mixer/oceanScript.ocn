@@ -5,7 +5,7 @@ modelFile(
     '("/home/asal/Shared/Model/45n270AModels.sp" "")
 )
 analysis('pss ?engine "Harmonic Balance"  ?flexbalance "yes"  ?oversamplefactor ""  
-		?fund "5.6G"  ?harms "10"  ?errpreset "moderate"  ?tstabenvlpstopHB ""  
+		?fund "5.5G"  ?harms "10"  ?errpreset "moderate"  ?tstabenvlpstopHB ""  
 		?step ""  ?writefinal ""  ?swapfile ""  ?checkpss ""  
 		?backtracking ""  )
 analysis('psp ?start "1M"  ?stop "100M"  ?portharmsvec list("1" "0" "1")  
@@ -15,7 +15,7 @@ analysis('pac ?outType "Voltage"  ?start "5.6G"  ?stop ""
 analysis('dc ?saveOppoint t  )
 desVar(	  "Itail" 2m	)
 desVar(	  "C" 1p	)
-desVar(	  "flo" 5.6G	)
+desVar(	  "flo" 5.5G	)
 desVar(	  "frf" 5.6G	)
 desVar(	  "pacmag" 1	)
 desVar(	  "plo" 10	)
