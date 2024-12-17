@@ -37,7 +37,8 @@ ends Gilbert_Cell
 I3 (IF_out net7 net8) balun rin=50 rout=100 loss=0
 I2 (net6 net4 net5) balun rin=50 rout=100 loss=0
 I1 (net1 net2 net3) balun rin=50 rout=100 loss=0
-PORT1 (net6 0) port r=50 num=1 type=dc freq=frf dbm=prf pacmag=pacmag
+PORT1 (net6 0) port r=50 num=1 type=sine freq=frf dbm=prf pacmag=pacmag \
+        fundname="frf"
 PORT0 (net1 0) port r=50 num=2 type=sine freq=flo dbm=plo pacmag=pacmag \
         fundname="flo"
 PORT2 (IF_out 0) port r=50 num=3 type=dc

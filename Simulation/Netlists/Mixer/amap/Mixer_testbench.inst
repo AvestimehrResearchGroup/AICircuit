@@ -1,0 +1,10 @@
+HEADER
+"PSFversion" "1.00"
+"I3n I2n I1n" "rfLib_balun_veriloga"
+"PORT1n" "analogLib_port_spectre"
+"PORT1n" "Mixer_testbench"
+"PORT0n" "analogLib_port_spectre"
+"PORT0n" "Mixer_testbench"
+"PORT2n" "analogLib_port_spectre"
+"PORT2n" "Mixer_testbench"
+"I7n" "Gilbert_Cell"
