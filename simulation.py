@@ -22,6 +22,11 @@ if args.circuit == 'Receiver':
    simulator_individual.run_all(n=args.npoints)   
    for i in range(len(results)):
       results[i].update(simulator_individual.sim_results[i])
+elif args.circuit == 'Mixer':
+   simulator_voltage_swing = Simulator(circuit_path, circuit_path_docker, circuit_params, params_path, 'oceanScriptVoltageSwing.ocn')
+   simulator_voltage_swing.run_all(n=args.npoints)   
+   for i in range(len(results)):
+      results[i].update(simulator_voltage_swing.sim_results[i])
 
 
 # print simulation results
