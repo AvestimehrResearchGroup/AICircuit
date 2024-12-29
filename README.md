@@ -44,7 +44,7 @@ python3 main.py --path ./Config/train_config.yaml --seed 0
 
 ### Run Simulation
 
-To run the simulation, check [SIM_QUIDE.md](./Simulation/SIM_GUIDE.md) for detailed instructions and setup. Then, use the following code:
+To run the simulation, check [SIM_GUIDE.md](./Simulation/SIM_GUIDE.md) for detailed instructions and setup. Then, use the following code:
 
 ```
 python simulation.py --circuit=CSVA --model=MultiLayerPerceptron --npoints=100
