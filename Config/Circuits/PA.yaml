@@ -1,0 +1,19 @@
+parameter_list:
+  - L1p
+  - L1s
+  - L3p
+  - L3s
+  - Lm
+  - Wn1
+  - Wn2
+performance_list:
+  - S11
+  - S22
+  - LargeSignalPowerGain
+  - PAE
+  - DrainEfficiency
+  - PSAT
+  - PowerConsumption
+arguments:
+  input: Dataset/PA
+  out: Dataset/PA

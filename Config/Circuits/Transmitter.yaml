@@ -1,0 +1,26 @@
+parameter_list:
+  - C1_VCO
+  - L1_VCO
+  - Rp_VCO
+  - Wn_VCO
+  - Wn6_VCO
+  - Wvar_VCO
+  - L1p_PA
+  - L1s_PA
+  - L3p_PA
+  - L3s_PA
+  - Wn1_PA
+  - Wn2_PA
+performance_list:
+  - PowerConsumption
+  - Bandwidth
+  - OutputPower
+  - VoltageSwing
+  - TuningRange_VCO
+  - PhaseNoise_VCO
+  - LargeSignal_PowerGain_PA
+  - DrainEfficiency_PA
+  - PAE_PA
+arguments:
+  input: Dataset/Transmitter
+  out: Dataset/Transmitter

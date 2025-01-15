@@ -1,0 +1,7 @@
+// Generated for: spectre
+// Generated on: Feb 12 04:09:05 2024
+// Design library name: CSVA
+// Design cell name: SingleStage
+// Design view name: schematic
+simulator lang=spectre
+global 0

@@ -1,0 +1,7 @@
+// Generated for: spectre
+// Generated on: May 22 21:51:38 2024
+// Design library name: TwoStageAmplifier
+// Design cell name: TwoStage
+// Design view name: schematic
+simulator lang=spectre
+global 0

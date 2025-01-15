@@ -1,0 +1,9 @@
+HEADER
+"PSFversion" "1.00"
+"I19n" "Diff_twostage_PA"
+"I18n" "Cross_coupled_VCO"
+"V1n V0n" "analogLib_vdc_spectre"
+"I10n I4n" "rfLib_balun_veriloga"
+"C3n C2n C1n C0n" "analogLib_cap_spectre"
+"PORT1n PORT0n" "analogLib_port_spectre"
+"L1n L2n L3n L0n" "analogLib_ind_spectre"

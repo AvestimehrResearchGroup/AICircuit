@@ -1,0 +1,12 @@
+parameter_list:
+  - Wbias
+  - Rd
+  - Wn1
+  - Wn2
+performance_list:
+  - Bandwidth
+  - PowerConsumption
+  - VoltageGain
+arguments:
+  input: Dataset/CVA
+  out: Dataset/CVA

@@ -1,0 +1,18 @@
+
+// Library name: CVA
+// Cell name: Cascode
+// View name: schematic
+N4 (net3 Vbias 0 GND) nmos w=Wbias l=45n m=1 region=sat
+N3 (net2 Vin\- net3 GND) nmos w=Wn1  l=45n m=1 region=sat
+N2 (Vout\- Vbias net2 GND) nmos w=Wn2 l=45n m=1 region=sat
+N1 (Vout\+ Vbias net1 GND) nmos w=Wn2 l=45n m=1 region=sat
+N0 (net1 Vin\+ net3 GND) nmos w=Wn1 l=45n m=1 region=sat
+R1 (VDD Vout\-) resistor r=Rd
+R0 (VDD Vout\+) resistor r=Rd
+C1 (Vout\- 0) capacitor c=1p
+C0 (Vout\+ 0) capacitor c=1p
+V4 (Vin\- 0) vsource dc=800m mag=1 phase=180 type=dc
+V3 (Vin\+ 0) vsource dc=800m mag=1 phase=0 type=dc
+V2 (GND 0) vsource dc=0 type=dc
+V1 (Vbias 0) vsource dc=1 type=dc
+V0 (VDD 0) vsource dc=1.2 type=dc

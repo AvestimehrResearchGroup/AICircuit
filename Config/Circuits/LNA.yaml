@@ -1,0 +1,17 @@
+parameter_list:
+  - C1
+  - C2
+  - Ld
+  - Lg
+  - Ls
+  - WN1
+  - WN2
+performance_list:
+  - GTMax
+  - S11Min
+  - NFMin
+  - Bandwidth
+  - PowerConsumption
+arguments:
+  input: Dataset/LNA
+  out: Dataset/LNA

@@ -1,0 +1,7 @@
+// Generated for: spectre
+// Generated on: Jun 12 18:52:27 2024
+// Design library name: Mixer
+// Design cell name: Mixer_testbench
+// Design view name: schematic
+simulator lang=spectre
+global 0

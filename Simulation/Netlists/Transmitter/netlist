@@ -1,0 +1,144 @@
+
+// Library name: Transmitter
+// Cell name: Diff_twostage_PA
+// View name: schematic
+subckt Diff_twostage_PA_schematic VDD Vin\+ Vin\- Vout\+ Vout\-
+    N7 (net16 Vbias2 net14 GND) nmos w=Wn2_PA l=45.0n as=Wn2_PA * 2.5 * (45.0n) \
+         ad=Wn2_PA * 2.5 * (45.0n) ps=(2 * Wn2_PA) + (5 * (45.0n)) pd=(2 * Wn2_PA) + (5 * (45.0n)) \
+         m=1 region=sat
+    N6 (net13 net10 GND GND) nmos w=Wn2_PA l=45.0n as=Wn2_PA * 2.5 * (45.0n) \
+         ad=Wn2_PA * 2.5 * (45.0n) ps=(2 * Wn2_PA) + (5 * (45.0n)) pd=(2 * Wn2_PA) + (5 * (45.0n)) \
+         m=1 region=sat
+    N5 (net15 Vbias2 net12 GND) nmos w=Wn2_PA l=45.0n as=Wn2_PA * 2.5 * (45.0n) \
+         ad=Wn2_PA * 2.5 * (45.0n) ps=(2 * Wn2_PA) + (5 * (45.0n)) pd=(2 * Wn2_PA) + (5 * (45.0n)) \
+         m=1 region=sat
+    N4 (net11 net9 GND GND) nmos w=Wn2_PA l=45.0n as=Wn2_PA * 2.5 * (45.0n) \
+         ad=Wn2_PA * 2.5 * (45.0n) ps=(2 * Wn2_PA) + (5 * (45.0n)) pd=(2 * Wn2_PA) + (5 * (45.0n)) \
+         m=1 region=sat
+    N3 (net8 Vbias net6 GND) nmos w=Wn1_PA l=45.0n as=Wn1_PA * 2.5 * (45.0n) \
+         ad=Wn1_PA * 2.5 * (45.0n) ps=(2 * Wn1_PA) + (5 * (45.0n)) pd=(2 * Wn1_PA) + (5 * (45.0n)) \
+         m=1 region=sat
+    N2 (net5 net2 GND GND) nmos w=Wn1_PA l=45.0n as=Wn1_PA * 2.5 * (45.0n) \
+        ad=Wn1_PA * 2.5 * (45.0n) ps=(2 * Wn1_PA) + (5 * (45.0n)) pd=(2 * Wn1_PA) + (5 * (45.0n)) \
+         m=1 region=sat
+    N1 (net7 Vbias net4 GND) nmos w=Wn1_PA l=45.0n as=Wn1_PA * 2.5 * (45.0n) \
+         ad=Wn1_PA * 2.5 * (45.0n) ps=(2 * Wn1_PA) + (5 * (45.0n)) pd=(2 * Wn1_PA) + (5 * (45.0n)) \
+         m=1 region=sat
+    N0 (net3 net1 GND GND) nmos w=Wn1_PA l=45.0n as=Wn1_PA * 2.5 * (45.0n) \
+        ad=Wn1_PA * 2.5 * (45.0n) ps=(2 * Wn1_PA) + (5 * (45.0n)) pd=(2 * Wn1_PA) + (5 * (45.0n)) \
+         m=1 region=sat
+    L15 (Vout\- net22) inductor l=L3s_PA q=50 fq=fin mode=1
+
+    L14 (Vout\+ net17) inductor l=L3s_PA q=50 fq=fin mode=1
+
+    L13 (Vin\- net18) inductor l=L1p_PA q=50 fq=fin mode=1
+
+    L12 (Vin\+ net19) inductor l=L1p_PA q=50 fq=fin mode=1
+
+    L11 (net16 VDD) inductor l=L3p_PA q=q fq=fin mode=1
+
+    L10 (net15 VDD) inductor l=L3p_PA q=q fq=fin mode=1
+
+    L9 (net13 net14) inductor l=Lm_PA q=q fq=fin mode=1
+
+    L8 (net11 net12) inductor l=Lm_PA q=q fq=fin mode=1
+
+    L7 (net10 Vinbias2) inductor l=L2s_PA q=q fq=fin mode=1
+
+    L6 (net9 Vinbias2) inductor l=L2s_PA q=q fq=fin mode=1
+
+    L5 (net8 VDD) inductor l=L2p_PA q=q fq=fin mode=1
+
+    L4 (net7 VDD) inductor l=L2p_PA q=q fq=fin mode=1
+
+    L3 (net5 net6) inductor l=Lm_PA q=q fq=fin mode=1
+
+    L2 (net3 net4) inductor l=Lm_PA q=q fq=fin mode=1
+
+    L1 (net2 Vinbias) inductor l=L1s_PA q=q fq=fin mode=1
+
+    L0 (net1 Vinbias) inductor l=L1s_PA q=q fq=fin mode=1
+
+    K5 mutual_inductor coupling=1 ind1=L11 ind2=L15
+    K4 mutual_inductor coupling=1 ind1=L10 ind2=L14
+    K3 mutual_inductor coupling=1 ind1=L5 ind2=L7
+    K2 mutual_inductor coupling=1 ind1=L4 ind2=L6
+    K1 mutual_inductor coupling=1 ind1=L13 ind2=L1
+    K0 mutual_inductor coupling=1 ind1=L12 ind2=L0
+    V5 (Vbias 0) vsource type=dc dc=Vb1
+    V4 (Vbias2 0) vsource type=dc dc=Vb2
+    V3 (Vinbias2 0) vsource type=dc dc=Vinb2
+    V2 (Vinbias 0) vsource type=dc dc=Vinb1
+    V0 (GND 0) vsource type=dc dc=0
+    R0 (net19 net18) resistor r=1
+    R1 (net17 net22) resistor r=1
+ends Diff_twostage_PA_schematic
+// End of subcircuit definition.
+
+// Library name: Transmitter
+// Cell name: Cross_coupled_VCO
+// View name: schematic
+subckt Cross_coupled_VCO_schematic Vcont Vout\+ Vout\-
+    N9 (net2 net11 0 GND) nmos w=Wbias l=45.0n as=Wbias * 2.5 * (45.0n) ad=Wbias * 2.5 * (45.0n) \
+         ps=(2 * Wbias) + (5 * (45.0n)) pd=(2 * Wbias) + (5 * (45.0n)) m=10 \
+        region=sat
+    N8 (VDD out\- net2 GND) nmos w=Wbuffer l=45.0n as=Wbuffer * 2.5 * (45.0n) \
+         ad=Wbuffer * 2.5 * (45.0n) ps=(2 * Wbuffer) + (5 * (45.0n)) pd=(2 * Wbuffer) + (5 * (45.0n)) \
+         m=1 region=sat
+    N7 (net1 net11 0 GND) nmos w=Wbias l=45.0n as=Wbias * 2.5 * (45.0n) ad=Wbias * 2.5 * (45.0n) \
+         ps=(2 * Wbias) + (5 * (45.0n)) pd=(2 * Wbias) + (5 * (45.0n)) m=10 \
+        region=sat
+    N6 (VDD out\+ net1 GND) nmos w=Wbuffer l=45.0n as=Wbuffer * 2.5 * (45.0n) \
+         ad=Wbuffer * 2.5 * (45.0n) ps=(2 * Wbuffer) + (5 * (45.0n)) pd=(2 * Wbuffer) + (5 * (45.0n)) \
+         m=1 region=sat
+    N5 (net11 net11 0 GND) nmos w=Wn5_VCO l=45.0n as=Wn5_VCO * 2.5 * (45.0n) \
+         ad=Wn5_VCO * 2.5 * (45.0n) ps=(2 * Wn5_VCO) + (5 * (45.0n)) pd=(2 * Wn5_VCO) + (5 * (45.0n)) \
+         m=1 region=sat
+    N4 (net3 net11 0 GND) nmos w=Wn6_VCO l=45.0n as=Wn6_VCO * 2.5 * (45.0n) \
+         ad=Wn6_VCO * 2.5 * (45.0n) ps=(2 * Wn6_VCO) + (5 * (45.0n)) pd=(2 * Wn6_VCO) + (5 * (45.0n)) \
+         m=25 region=sat
+    N3 (Vcont out\- Vcont GND) nmos w=Wvar_VCO l=45.0n as=Wvar_VCO * 2.5 * (45.0n) \
+         ad=Wvar_VCO * 2.5 * (45.0n) ps=(2 * Wvar_VCO) + (5 * (45.0n)) pd=(2 * Wvar_VCO) + (5 * (45.0n)) \
+         m=20 region=sat
+    N2 (Vcont out\+ Vcont GND) nmos w=Wvar_VCO l=45.0n as=Wvar_VCO * 2.5 * (45.0n) \
+         ad=Wvar_VCO * 2.5 * (45.0n) ps=(2 * Wvar_VCO) + (5 * (45.0n)) pd=(2 * Wvar_VCO) + (5 * (45.0n)) \
+         m=20 region=sat
+    N1 (out\+ out\- net3 GND) nmos w=Wn_VCO l=45.0n as=Wn_VCO * 2.5 * (45.0n) \
+         ad=Wn_VCO * 2.5 * (45.0n) ps=(2 * Wn_VCO) + (5 * (45.0n)) pd=(2 * Wn_VCO) + (5 * (45.0n)) \
+         m=5 region=sat
+    N0 (out\- out\+ net3 GND) nmos w=Wn_VCO l=45.0n as=Wn_VCO * 2.5 * (45.0n) \
+         ad=Wn_VCO * 2.5 * (45.0n) ps=(2 * Wn_VCO) + (5 * (45.0n)) pd=(2 * Wn_VCO) + (5 * (45.0n)) \
+         m=5 region=sat
+    C1 (VDD out\-) capacitor c=C1_VCO m=1
+    C0 (VDD out\+) capacitor c=C1_VCO m=1
+    R1 (VDD out\-) resistor r=Rp_VCO m=1
+    R0 (VDD out\+) resistor r=Rp_VCO m=1
+    L1 (VDD out\-) inductor l=L1_VCO m=1
+    L0 (VDD out\+) inductor l=L1_VCO m=1
+    I0 (VDD net11) isource type=dc dc=Iref m=1
+    V1 (VDD 0) vsource type=dc dc=1.2
+    V0 (GND 0) vsource type=dc dc=0
+    C3 (net2 Vout\-) capacitor c=1p
+    C2 (Vout\+ net1) capacitor c=1p
+ends Cross_coupled_VCO_schematic
+// End of subcircuit definition.
+
+// Library name: Transmitter
+// Cell name: VCO_PA
+// View name: schematic
+I19 (net8 VCO_OUT\+ VCO_OUT\- net7 net4) Diff_twostage_PA_schematic
+V1 (net8 0) vsource dc=1.2 type=dc
+V0 (net3 0) vsource dc=Vcont type=dc
+I10 (net9 VCO_OUT\+ VCO_OUT\-) balun rin=50 rout=100 loss=0
+I4 (OUT net2 net1) balun rin=50 rout=100 loss=0
+I18 (net3 net6 net5) Cross_coupled_VCO_schematic
+C3 (net1 0) capacitor c=Cmatch2
+C2 (net2 0) capacitor c=Cmatch2
+C1 (net5 VCO_OUT\-) capacitor c=Cmatch1
+C0 (net6 VCO_OUT\+) capacitor c=Cmatch1
+PORT1 (OUT 0) port r=50 type=sine
+PORT0 (net9 0) port r=50 type=sine
+L1 (net5 0) inductor l=Lmatch1
+L2 (net7 net2) inductor l=Lmatch2
+L3 (net4 net1) inductor l=Lmatch2
+L0 (net6 0) inductor l=Lmatch1

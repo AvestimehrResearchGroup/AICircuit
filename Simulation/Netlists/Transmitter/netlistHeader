@@ -1,0 +1,7 @@
+// Generated for: spectre
+// Generated on: May 30 17:47:30 2024
+// Design library name: Transmitter
+// Design cell name: VCO_PA
+// Design view name: schematic
+simulator lang=spectre
+global 0

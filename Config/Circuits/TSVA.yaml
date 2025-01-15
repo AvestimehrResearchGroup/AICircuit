@@ -1,0 +1,14 @@
+parameter_list:
+  - C1
+  - WNOUT
+  - WPOUT
+  - WCS
+  - WN1
+  - WP1
+performance_list:
+  - Bandwidth
+  - PowerConsumption
+  - VoltageGain
+arguments:
+  input: Dataset/TSVA
+  out: Dataset/TSVA

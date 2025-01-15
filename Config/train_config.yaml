@@ -1,0 +1,14 @@
+model_config:
+  - model: MultiLayerPerceptron
+device: cpu
+log_experiments: False
+epochs: 100
+subset:
+  - 0.9
+circuits:
+  - CSVA
+compare_method: False
+kfold: False
+independent_kfold: True
+save_format: csv
+save_model: True

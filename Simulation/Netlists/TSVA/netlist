@@ -1,0 +1,56 @@
+
+// Library name: TSVA
+// Cell name: TwoStage
+// View name: schematic
+N6 (Vout\- Vb5 0 GND) nmos w=WNOUT l=45.0n as=WNOUT * 2.5 * (45.0n) ad=WNOUT * 2.5 * (45.0n) \
+         ps=(2 * WNOUT) + (5 * (45.0n)) pd=(2 * WNOUT) + (5 * (45.0n)) m=5 \
+        region=sat
+N5 (Vout\+ Vb5 0 GND) nmos w=WNOUT l=45.0n as=WNOUT * 2.5 * (45.0n) ad=WNOUT * 2.5 * (45.0n) \
+         ps=(2 * WNOUT) + (5 * (45.0n)) pd=(2 * WNOUT) + (5 * (45.0n)) m=5 \
+        region=sat
+N4 (net7 Vb4 0 GND) nmos w=WCS l=45.0n as=WCS * 2.5 * (45.0n) ad=WCS * 2.5 * (45.0n) \
+         ps=(2 * WCS) + (5 * (45.0n)) pd=(2 * WCS) + (5 * (45.0n)) m=4 \
+        region=sat
+N3 (net6 Vin\- net7 GND) nmos w=WN1 l=45.0n as=WN1 * 2.5 * (45.0n) ad=WN1 * 2.5 * (45.0n) \
+         ps=(2 * WN1) + (5 * (45.0n)) pd=(2 * WN1) + (5 * (45.0n)) m=4 \
+        region=sat
+N2 (net5 Vin\+ net7 GND) nmos w=WN1 l=45.0n as=WN1 * 2.5 * (45.0n) ad=WN1 * 2.5 * (45.0n) \
+         ps=(2 * WN1) + (5 * (45.0n)) pd=(2 * WN1) + (5 * (45.0n)) m=4 \
+        region=sat
+N1 (net9 Vb1 net6 GND) nmos w=WN1 l=45.0n as=WN1 * 2.5 * (45.0n) ad=WN1 * 2.5 * (45.0n) \
+         ps=(2 * WN1) + (5 * (45.0n)) pd=(2 * WN1) + (5 * (45.0n)) m=4 \
+        region=sat
+N0 (net8 Vb1 net5 GND) nmos w=WN1 l=45.0n as=WN1 * 2.5 * (45.0n) ad=WN1 * 2.5 * (45.0n) \
+         ps=(2 * WN1) + (5 * (45.0n)) pd=(2 * WN1) + (5 * (45.0n)) m=4 \
+        region=sat
+P5 (Vout\+ net8 VDD VDD) pmos w=WPOUT l=45.0n as=WPOUT * 2.5 * (45.0n) ad=WPOUT * 2.5 * (45.0n) \
+         ps=(2 * WPOUT) + (5 * (45.0n)) pd=(2 * WPOUT) + (5 * (45.0n)) m=5 \
+        region=sat
+P4 (Vout\- net9 VDD VDD) pmos w=WPOUT l=45.0n as=WPOUT * 2.5 * (45.0n) ad=WPOUT * 2.5 * (45.0n) \
+         ps=(2 * WPOUT) + (5 * (45.0n)) pd=(2 * WPOUT) + (5 * (45.0n)) m=5 \
+        region=sat
+P3 (net9 Vb2 net2 VDD) pmos w=WP1 l=45.0n as=WP1 * 2.5 * (45.0n) ad=WP1 * 2.5 * (45.0n) \
+         ps=(2 * WP1) + (5 * (45.0n)) pd=(2 * WP1) + (5 * (45.0n)) m=4 \
+        region=sat
+P2 (net8 Vb2 net1 VDD) pmos w=WP1 l=45.0n as=WP1 * 2.5 * (45.0n) ad=WP1 * 2.5 * (45.0n) \
+         ps=(2 * WP1) + (5 * (45.0n)) pd=(2 * WP1) + (5 * (45.0n)) m=4 \
+        region=sat
+P1 (net2 Vb3 VDD VDD) pmos w=WP1 l=45.0n as=WP1 * 2.5 * (45.0n) ad=WP1 * 2.5 * (45.0n) \
+         ps=(2 * WP1) + (5 * (45.0n)) pd=(2 * WP1) + (5 * (45.0n)) m=4 \
+        region=sat
+P0 (net1 Vb3 VDD VDD) pmos w=WP1 l=45.0n as=WP1 * 2.5 * (45.0n) ad=WP1 * 2.5 * (45.0n) \
+         ps=(2 * WP1) + (5 * (45.0n)) pd=(2 * WP1) + (5 * (45.0n)) m=4 \
+        region=sat
+C3 (Vout\- 0) capacitor c=C0 m=1
+C2 (Vout\+ 0) capacitor c=C0 m=1
+C1 (net9 Vout\-) capacitor c=C1 m=1
+C0 (net8 Vout\+) capacitor c=C1 m=1
+V8 (Vin\- GND) vsource type=dc dc=Vbmain mag=2m phase=180
+V7 (Vin\+ GND) vsource type=dc dc=Vbmain mag=2m phase=0
+V6 (Vb5 GND) vsource type=dc dc=Vb5
+V5 (Vb4 GND) vsource type=dc dc=Vb4
+V4 (Vb3 GND) vsource type=dc dc=Vb3
+V3 (Vb2 GND) vsource type=dc dc=Vb2
+V2 (Vb1 GND) vsource type=dc dc=Vb1
+V1 (VDD GND) vsource type=dc dc=VDD
+V0 (GND 0) vsource type=dc dc=0

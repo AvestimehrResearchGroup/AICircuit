@@ -1,0 +1,28 @@
+
+// Library name: VCO
+// Cell name: VCO
+// View name: schematic
+subckt VCO Vcont Vout\+ Vout\-
+    N5 (net16 net16 0 GND) nmos w=Wn5 l=45n m=1 region=sat
+    N4 (net1 net16 0 GND) nmos w=Wn6 l=45n m=40 region=sat
+    N3 (Vcont Vout\- Vcont GND) nmos w=Wvar l=45n m=25 region=sat
+    N2 (Vcont Vout\+ Vcont GND) nmos w=Wvar l=45n m=25 region=sat
+    N1 (Vout\+ Vout\- net1 GND) nmos w=Wn l=45n m=20 region=sat
+    N0 (Vout\- Vout\+ net1 GND) nmos w=Wn l=45n m=20 region=sat
+    I0 (VDD net16) isource dc=300u type=dc
+    C1 (VDD Vout\-) capacitor c=C1
+    C0 (VDD Vout\+) capacitor c=C1
+    R1 (VDD Vout\-) resistor r=Rp
+    R0 (VDD Vout\+) resistor r=Rp
+    L1 (VDD Vout\-) inductor l=L1
+    L0 (VDD Vout\+) inductor l=L1
+    V1 (VDD 0) vsource dc=1.6 type=dc
+    V0 (GND 0) vsource dc=0 type=dc
+ends VCO
+// End of subcircuit definition.
+
+// Library name: VCO
+// Cell name: VCO_testbench
+// View name: schematic
+I0 (net1 Vout\+ Vout\-) VCO
+V0 (net1 0) vsource dc=Vcont type=dc

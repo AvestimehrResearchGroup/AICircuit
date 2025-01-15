@@ -1,0 +1,42 @@
+simulator( 'spectre )
+design(  "/home/asal/Shared/Netlists/Mixer/netlist")
+resultsDir( "/home/asal/Shared/Results/Mixer" )
+modelFile( 
+    '("/home/asal/Shared/Model/45n270AModels.sp" "")
+)
+analysis('pss ?engine "Harmonic Balance"  ?flexbalance "yes"  ?oversamplefactor ""  
+		?fund "5.5G"  ?harms "10"  ?errpreset "moderate"  ?tstabenvlpstopHB ""  
+		?step ""  ?writefinal ""  ?swapfile ""  ?checkpss ""  
+		?backtracking ""  )
+analysis('psp ?start "1M"  ?stop "100M"  ?portharmsvec list("1" "0" "1")  
+		?ports "[/PORT1 /PORT2 /PORT0]"  ?maxsideband "10"  ?relativeTol ""  )
+analysis('pac ?outType "Voltage"  ?start "5.6G"  ?stop ""  
+		?maxsideband "2"  ?relativeTol ""  )
+analysis('dc ?saveOppoint t  )
+desVar(	  "Itail" 2m	)
+desVar(	  "C" 1p	)
+desVar(	  "flo" 5.5G	)
+desVar(	  "frf" 5.6G	)
+desVar(	  "pacmag" 1	)
+desVar(	  "plo" 10	)
+desVar(	  "prf" -40	)
+desVar(	  "R" 350	)
+desVar(	  "WLO" 10u	)
+desVar(	  "WRF" 20u	)
+envOption(
+	'analysisOrder  list("dc" "tran" "pss" "pac" "psp") 
+)
+saveOption( 'pwr "all" )
+saveOption( 'save "all" )
+temp( 27 ) 
+run()
+ConversionGain = value(db((vh('pac "/net7" '-1) - vh('pac "/net8" '-1))) 10)
+NoiseFigure = ymin(getData("NF" ?result "psp"))
+PowerConsumption = getData(":pwr" ?result "dcOp")
+
+filePtr = outfile("./results.txt" "w")
+ocnPrint( ?output filePtr "Simulated performance ..." )
+ocnPrint( ?output filePtr ?numberNotation 'scientific ?numSpaces 1 "ConversionGain:" ConversionGain)
+ocnPrint( ?output filePtr ?numberNotation 'scientific ?numSpaces 1 "NoiseFigure:" NoiseFigure )
+ocnPrint( ?output filePtr ?numberNotation 'scientific ?numSpaces 1 "PowerConsumption:" PowerConsumption )
+close(filePtr)

@@ -1,0 +1,8 @@
+HEADER
+"PSFversion" "1.00"
+"PLUSv" ":pv"
+"MINUSv" "(FUNCTION minus(root(\"PLUS\")))v"
+"P1v" ":pv"
+"M1v" "(FUNCTION minus(root(\"P1\")))v"
+"P2v" "\:P2v"
+"M2v" "\:M2v"

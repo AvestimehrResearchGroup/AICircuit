@@ -1,0 +1,28 @@
+parameter_list:
+  - C1_LNA
+  - C2_LNA
+  - Ld_LNA
+  - Lg_LNA
+  - Ls_LNA
+  - WN1_LNA
+  - WN2_LNA
+  - C_Mixer
+  - R_Mixer
+  - WLO_Mixer
+  - WRF_Mixer
+  - Rd_Amp
+  - Wn1_Amp
+  - Wn2_Amp
+performance_list:
+  - PowerConsumption
+  - VoltageGain
+  - NoiseFigure
+  - PowerGain_LNA
+  - NoiseFigure_LNA
+  - S11_LNA
+  - ConversionGain_Mixer
+  - VoltageSwing_Mixer
+  - VoltageGain_Amp
+arguments:
+  input: Dataset/Receiver
+  out: Dataset/Receiver

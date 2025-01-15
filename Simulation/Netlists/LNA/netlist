@@ -1,0 +1,34 @@
+
+// Library name: LNA
+// Cell name: LNA
+// View name: schematic
+subckt LNA Vin Vout
+    N0 (net6 net3 net5 GND) nmos w=WN1 l=45.0n as=WN1 * 2.5 * (45.0n) ad=WN1 * 2.5 * (45.0n) \
+         ps=(2 * WN1) + (5 * (45.0n)) pd=(2 * WN1) + (5 * (45.0n)) m=5 \
+        region=sat
+    N2 (net1 net1 0 GND) nmos w=W l=45.0n as=W * 2.5 * (45.0n) ad=W * 2.5 * (45.0n) \
+         ps=(2 * W) + (5 * (45.0n)) pd=(2 * W) + (5 * (45.0n)) m=5 \
+        region=sat
+    N1 (net7 VDD net6 GND) nmos w=WN2 l=45.0n as=WN2 * 2.5 * (45.0n) ad=WN2 * 2.5 * (45.0n) \
+         ps=(2 * WN2) + (5 * (45.0n)) pd=(2 * WN2) + (5 * (45.0n)) m=5 \
+        region=sat
+    R2 (VDD net7) resistor r=R3
+    R1 (net1 net2) resistor r=R2
+    R0 (VDD net1) resistor r=R1
+    L2 (net5 0) inductor l=Ls
+    L1 (net2 net3) inductor l=Lg
+    L0 (VDD net7) inductor l=Ld
+    C2 (Vout 0) capacitor c=100f
+    C1 (net7 Vout) capacitor c=C1
+    C0 (Vin net2) capacitor c=C2
+    V1 (GND 0) vsource dc=0 type=dc
+    V0 (VDD 0) vsource dc=VDD type=dc
+ends LNA
+// End of subcircuit definition.
+
+// Library name: LNA
+// Cell name: LNA_testbench
+// View name: schematic
+PORT0 (IN 0) port r=Z0 num=1 dc=Vbmain type=sine dbm=-20
+PORT1 (OUT 0) port r=50 num=2 type=dc
+I0 (IN OUT) LNA

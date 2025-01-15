@@ -1,0 +1,9 @@
+
+// Library name: CSVA
+// Cell name: SingleStage
+// View name: schematic
+N0 (Vout Vin 0 0) nmos w=Wn l=45n m=1 region=sat
+C0 (Vout 0) capacitor c=1p
+R0 (VDD Vout) resistor r=Rd
+V1 (Vin 0) vsource dc=Vgate mag=1 type=dc
+V0 (VDD 0) vsource dc=VDD type=dc

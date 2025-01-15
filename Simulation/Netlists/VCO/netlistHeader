@@ -1,0 +1,7 @@
+// Generated for: spectre
+// Generated on: Feb 20 04:04:32 2024
+// Design library name: VCO
+// Design cell name: VCO
+// Design view name: schematic
+simulator lang=spectre
+global 0

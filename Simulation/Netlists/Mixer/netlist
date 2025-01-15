@@ -1,0 +1,44 @@
+
+// Library name: Mixer
+// Cell name: Gilbert_Cell
+// View name: schematic
+subckt Gilbert_Cell IF\+ IF\- LO\+ LO\- RF\+ RF\-
+    N5 (net2 RF\- net3 GND) nmos w=WRF l=45.0n as=WRF * 2.5 * (45.0n) ad=WRF * 2.5 * (45.0n) \
+         ps=(2 * WRF) + (5 * (45.0n)) pd=(2 * WRF) + (5 * (45.0n)) m=1 \
+        region=sat
+    N4 (net1 RF\+ net3 GND) nmos w=WRF l=45.0n as=WRF * 2.5 * (45.0n) ad=WRF * 2.5 * (45.0n) \
+         ps=(2 * WRF) + (5 * (45.0n)) pd=(2 * WRF) + (5 * (45.0n)) m=1 \
+        region=sat
+    N3 (IF\- LO\+ net2 GND) nmos w=WLO l=45.0n as=WLO * 2.5 * (45.0n) ad=WLO * 2.5 * (45.0n) \
+         ps=(2 * WLO) + (5 * (45.0n)) pd=(2 * WLO) + (5 * (45.0n)) m=1 \
+        region=sat
+    N2 (IF\+ LO\- net2 GND) nmos w=WLO l=45.0n as=WLO * 2.5 * (45.0n) ad=WLO * 2.5 * (45.0n) \
+         ps=(2 * WLO) + (5 * (45.0n)) pd=(2 * WLO) + (5 * (45.0n)) m=1 \
+        region=sat
+    N1 (IF\- LO\- net1 GND) nmos w=WLO l=45.0n as=WLO * 2.5 * (45.0n) ad=WLO * 2.5 * (45.0n) \
+         ps=(2 * WLO) + (5 * (45.0n)) pd=(2 * WLO) + (5 * (45.0n)) m=1 \
+        region=sat
+    N0 (IF\+ LO\+ net1 GND) nmos w=WLO l=45.0n as=WLO * 2.5 * (45.0n) ad=WLO * 2.5 * (45.0n) \
+         ps=(2 * WLO) + (5 * (45.0n)) pd=(2 * WLO) + (5 * (45.0n)) m=1 \
+        region=sat
+    R1 (VDD IF\-) resistor r=R
+    R0 (VDD IF\+) resistor r=R
+    C1 (VDD IF\-) capacitor c=C
+    C0 (VDD IF\+) capacitor c=C
+    V1 (GND 0) vsource type=dc
+    V0 (VDD 0) vsource dc=1.2 type=dc
+    I14 (net3 0) isource dc=Itail type=dc
+ends Gilbert_Cell
+// End of subcircuit definition.
+
+// Library name: Mixer
+// Cell name: Mixer_testbench
+// View name: schematic
+I3 (IF_out net7 net8) balun rin=50 rout=100 loss=0
+I2 (net6 net4 net5) balun rin=50 rout=100 loss=0
+I1 (net1 net2 net3) balun rin=50 rout=100 loss=0
+PORT1 (net6 0) port r=50 num=1 type=dc freq=frf dbm=prf pacmag=pacmag
+PORT0 (net1 0) port r=50 num=2 type=sine freq=flo dbm=plo pacmag=pacmag \
+        fundname="flo"
+PORT2 (IF_out 0) port r=50 num=3 type=dc
+I7 (net7 net8 net2 net3 net4 net5) Gilbert_Cell

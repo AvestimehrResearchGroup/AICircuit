@@ -1,0 +1,13 @@
+parameter_list:
+  - C
+  - R
+  - WLO 
+  - RF
+performance_list:
+  - PowerConsumption
+  - IFVoltageSwing
+  - ConversionGain
+  - NoiseFigure
+arguments:
+  input: Dataset/Mixer
+  out: Dataset/Mixer

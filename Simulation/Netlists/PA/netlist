@@ -1,0 +1,95 @@
+
+// Library name: PA
+// Cell name: Diff_twostage_PA
+// View name: schematic
+subckt Diff_twostage_PA VDD Vin\+ Vin\- Vout\+ Vout\-
+    N7 (net16 Vbias2 net14 GND) nmos w=Wn2 l=45.0n as=Wn2 * 2.5 * (45.0n) ad=Wn2 * 2.5 * (45.0n) \
+         ps=(2 * Wn2) + (5 * (45.0n)) pd=(2 * Wn2) + (5 * (45.0n)) m=1 \
+        region=sat
+    N6 (net13 net10 GND GND) nmos w=Wn2 l=45.0n as=Wn2 * 2.5 * (45.0n) ad=Wn2 * 2.5 * (45.0n) \
+         ps=(2 * Wn2) + (5 * (45.0n)) pd=(2 * Wn2) + (5 * (45.0n)) m=1 \
+        region=sat
+    N5 (net15 Vbias2 net12 GND) nmos w=Wn2 l=45.0n as=Wn2 * 2.5 * (45.0n) ad=Wn2 * 2.5 * (45.0n) \
+         ps=(2 * Wn2) + (5 * (45.0n)) pd=(2 * Wn2) + (5 * (45.0n)) m=1 \
+        region=sat
+    N4 (net11 net9 GND GND) nmos w=Wn2 l=45.0n as=Wn2 * 2.5 * (45.0n) ad=Wn2 * 2.5 * (45.0n) \
+         ps=(2 * Wn2) + (5 * (45.0n)) pd=(2 * Wn2) + (5 * (45.0n)) m=1 \
+        region=sat
+    N3 (net8 Vbias net6 GND) nmos w=Wn1 l=45.0n as=Wn1 * 2.5 * (45.0n) ad=Wn1 * 2.5 * (45.0n) \
+         ps=(2 * Wn1) + (5 * (45.0n)) pd=(2 * Wn1) + (5 * (45.0n)) m=1 \
+        region=sat
+    N2 (net5 net2 GND GND) nmos w=Wn1 l=45.0n as=Wn1 * 2.5 * (45.0n) ad=Wn1 * 2.5 * (45.0n) \
+         ps=(2 * Wn1) + (5 * (45.0n)) pd=(2 * Wn1) + (5 * (45.0n)) m=1 \
+        region=sat
+    N1 (net7 Vbias net4 GND) nmos w=Wn1 l=45.0n as=Wn1 * 2.5 * (45.0n) ad=Wn1 * 2.5 * (45.0n) \
+         ps=(2 * Wn1) + (5 * (45.0n)) pd=(2 * Wn1) + (5 * (45.0n)) m=1 \
+        region=sat
+    N0 (net3 net1 GND GND) nmos w=Wn1 l=45.0n as=Wn1 * 2.5 * (45.0n) ad=Wn1 * 2.5 * (45.0n) \
+         ps=(2 * Wn1) + (5 * (45.0n)) pd=(2 * Wn1) + (5 * (45.0n)) m=1 \
+        region=sat
+    L15 (Vout\- net22) inductor l=L3s q=50 fq=fin mode=1
+
+    L14 (Vout\+ net17) inductor l=L3s q=50 fq=fin mode=1
+
+    L13 (Vin\- net18) inductor l=L1p q=50 fq=fin mode=1
+
+    L12 (Vin\+ net19) inductor l=L1p q=50 fq=fin mode=1
+
+    L11 (net16 VDD) inductor l=L3p q=q fq=fin mode=1
+
+    L10 (net15 VDD) inductor l=L3p q=q fq=fin mode=1
+
+    L9 (net13 net14) inductor l=Lm q=q fq=fin mode=1
+
+    L8 (net11 net12) inductor l=Lm q=q fq=fin mode=1
+
+    L7 (net10 Vinbias2) inductor l=L2s q=q fq=fin mode=1
+
+    L6 (net9 Vinbias2) inductor l=L2s q=q fq=fin mode=1
+
+    L5 (net8 VDD) inductor l=L2p q=q fq=fin mode=1
+
+    L4 (net7 VDD) inductor l=L2p q=q fq=fin mode=1
+
+    L3 (net5 net6) inductor l=Lm q=q fq=fin mode=1
+
+    L2 (net3 net4) inductor l=Lm q=q fq=fin mode=1
+
+    L1 (net2 Vinbias) inductor l=L1s q=q fq=fin mode=1
+
+    L0 (net1 Vinbias) inductor l=L1s q=q fq=fin mode=1
+
+    K5 mutual_inductor coupling=1 ind1=L11 ind2=L15
+    K4 mutual_inductor coupling=1 ind1=L10 ind2=L14
+    K3 mutual_inductor coupling=1 ind1=L5 ind2=L7
+    K2 mutual_inductor coupling=1 ind1=L4 ind2=L6
+    K1 mutual_inductor coupling=1 ind1=L13 ind2=L1
+    K0 mutual_inductor coupling=1 ind1=L12 ind2=L0
+    V5 (Vbias 0) vsource type=dc dc=Vb1
+    V4 (Vbias2 0) vsource type=dc dc=Vb2
+    V3 (Vinbias2 0) vsource type=dc dc=Vinb2
+    V2 (Vinbias 0) vsource type=dc dc=Vinb1
+    V0 (GND 0) vsource type=dc dc=0
+    R0 (net19 net18) resistor r=1
+    R1 (net17 net22) resistor r=1
+ends Diff_twostage_PA
+// End of subcircuit definition.
+
+// Library name: PowerAmplifier
+// Cell name: PA_testbench
+// View name: schematic
+PORT0 (net5 0) port r=50 num=1 type=sine freq=fin dbm=pin pacdbm=pin \
+        fundname="InputFreq"
+C2 (net8 0) capacitor c=110f m=1
+C3 (net9 0) capacitor c=110f m=1
+C0 (net2 0) capacitor c=101.2f m=1
+C1 (net1 0) capacitor c=101.2f m=1
+I11 (net6 net8 net9) balun rin=50 rout=100 loss=0
+I10 (net5 net4 net3) balun rin=50 rout=100 loss=0
+PORT1 (net6 0) port r=50 num=2 type=dc
+V1 (VDD 0) vsource type=dc dc=1.2
+L3 (net11 net9) inductor l=100p m=1
+L2 (net12 net8) inductor l=100p m=1
+L1 (net3 net1) inductor l=1.5n m=1
+L0 (net4 net2) inductor l=1.5n m=1
+I0 (VDD net2 net1 net12 net11) Diff_twostage_PA

@@ -1,0 +1,7 @@
+// Generated for: spectre
+// Generated on: Jun 11 22:02:18 2024
+// Design library name: PowerAmplifier
+// Design cell name: PA_testbench
+// Design view name: schematic
+simulator lang=spectre
+global 0

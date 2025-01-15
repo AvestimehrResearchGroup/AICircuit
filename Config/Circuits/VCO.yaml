@@ -1,0 +1,17 @@
+parameter_list:
+  - C1
+  - L1
+  - Rp
+  - Wn
+  - Wn5
+  - Wn6
+  - Wvar
+performance_list:
+  - OscillationFrequency
+  - PowerConsumption
+  - OutputPower
+  - PhaseNoise
+  - TuningRange
+arguments:
+  input: Dataset/VCO
+  out: Dataset/VCO

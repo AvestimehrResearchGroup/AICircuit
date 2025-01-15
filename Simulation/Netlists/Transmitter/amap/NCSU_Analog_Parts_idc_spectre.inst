@@ -1,0 +1,4 @@
+HEADER
+"PSFversion" "1.00"
+"PLUSv" ":sinkv"
+"MINUSv" "(FUNCTION minus(root(\"PLUS\")))v"

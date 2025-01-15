@@ -1,0 +1,133 @@
+
+// Library name: Receiver
+// Cell name: Gilbert_Cell
+// View name: schematic
+subckt Gilbert_Cell IF\+ IF\- LO\+ LO\- RF\+ RF\-
+    N5 (net2 RF\- net3 GND) nmos w=WRF_Mixer l=45.0n as=WRF_Mixer * 2.5 * (45.0n) \
+         ad=WRF_Mixer * 2.5 * (45.0n) ps=(2 * WRF_Mixer) + (5 * (45.0n)) pd=(2 * WRF_Mixer) + (5 * (45.0n)) \
+         m=2 region=sat
+    N4 (net1 RF\+ net3 GND) nmos w=WRF_Mixer l=45.0n as=WRF_Mixer * 2.5 * (45.0n) \
+         ad=WRF_Mixer * 2.5 * (45.0n) ps=(2 * WRF_Mixer) + (5 * (45.0n)) pd=(2 * WRF_Mixer) + (5 * (45.0n)) \
+         m=2 region=sat
+    N3 (IF\- LO\+ net2 GND) nmos w=WLO_Mixer l=45.0n as=WLO_Mixer * 2.5 * (45.0n) \
+         ad=WLO_Mixer * 2.5 * (45.0n) ps=(2 * WLO_Mixer) + (5 * (45.0n)) pd=(2 * WLO_Mixer) + (5 * (45.0n)) \
+         m=2 region=sat
+    N2 (IF\+ LO\- net2 GND) nmos w=WLO_Mixer l=45.0n as=WLO_Mixer * 2.5 * (45.0n) \
+         ad=WLO_Mixer * 2.5 * (45.0n) ps=(2 * WLO_Mixer) + (5 * (45.0n)) pd=(2 * WLO_Mixer) + (5 * (45.0n)) \
+         m=2 region=sat
+    N1 (IF\- LO\- net1 GND) nmos w=WLO_Mixer l=45.0n as=WLO_Mixer * 2.5 * (45.0n) \
+         ad=WLO_Mixer * 2.5 * (45.0n) ps=(2 * WLO_Mixer) + (5 * (45.0n)) pd=(2 * WLO_Mixer) + (5 * (45.0n)) \
+         m=2 region=sat
+    N0 (IF\+ LO\+ net1 GND) nmos w=WLO_Mixer l=45.0n as=WLO_Mixer * 2.5 * (45.0n) \
+         ad=WLO_Mixer * 2.5 * (45.0n) ps=(2 * WLO_Mixer) + (5 * (45.0n)) pd=(2 * WLO_Mixer) + (5 * (45.0n)) \
+         m=2 region=sat
+    R1 (VDD IF\-) resistor r=R_Mixer
+    R0 (VDD IF\+) resistor r=R_Mixer
+    C1 (VDD IF\-) capacitor c=C_Mixer
+    C0 (VDD IF\+) capacitor c=C_Mixer
+    V1 (GND 0) vsource type=dc
+    V0 (VDD 0) vsource dc=1.2 type=dc
+    I14 (net3 0) isource dc=Itail_Mixer type=dc
+ends Gilbert_Cell
+// End of subcircuit definition.
+
+// Library name: Receiver
+// Cell name: Cascode
+// View name: schematic
+subckt Cascode Vin\+ Vin\- Vout\+ Vout\-
+    N3 (net2 Vin\- net4 GND) nmos w=Wn1_Amp l=45.0n as=Wn1_Amp * 2.5 * (45.0n) \
+         ad=Wn1_Amp * 2.5 * (45.0n) ps=(2 * Wn1_Amp) + (5 * (45.0n)) pd=(2 * Wn1_Amp) + (5 * (45.0n)) \
+         m=4 region=sat
+    N2 (Vout\- Vbias net2 GND) nmos w=Wn2_Amp l=45.0n as=Wn2_Amp * 2.5 * (45.0n) \
+         ad=Wn2_Amp * 2.5 * (45.0n) ps=(2 * Wn2_Amp) + (5 * (45.0n)) pd=(2 * Wn2_Amp) + (5 * (45.0n)) \
+         m=4 region=sat
+    N1 (net1 Vin\+ net4 GND) nmos w=Wn1_Amp l=45.0n as=Wn1_Amp * 2.5 * (45.0n) \
+         ad=Wn1_Amp * 2.5 * (45.0n) ps=(2 * Wn1_Amp) + (5 * (45.0n)) pd=(2 * Wn1_Amp) + (5 * (45.0n)) \
+         m=4 region=sat
+    N0 (Vout\+ Vbias net1 GND) nmos w=Wn2_Amp l=45.0n as=Wn2_Amp * 2.5 * (45.0n) \
+         ad=Wn2_Amp * 2.5 * (45.0n) ps=(2 * Wn2_Amp) + (5 * (45.0n)) pd=(2 * Wn2_Amp) + (5 * (45.0n)) \
+         m=4 region=sat
+    R1 (VDD Vout\-) resistor r=Rd_Amp
+    R0 (VDD Vout\+) resistor r=Rd_Amp
+    V3 (GND 0) vsource type=dc
+    V1 (Vbias 0) vsource dc=800m type=dc
+    V0 (VDD 0) vsource dc=1.2 type=dc
+    C1 (Vout\- 0) capacitor c=1p
+    C0 (Vout\+ 0) capacitor c=1p
+    I10 (net4 0) isource dc=Ibias_Amp type=dc
+ends Cascode
+// End of subcircuit definition.
+
+// Library name: Receiver
+// Cell name: LNA
+// View name: schematic
+subckt LNA Vin\+ Vin\- Vout\+ Vout\-
+    N5 (net4 net4 0 GND) nmos w=W_LNA l=45.0n as=W_LNA * 2.5 * (45.0n) ad=W_LNA * 2.5 * (45.0n) \
+         ps=(2 * W_LNA) + (5 * (45.0n)) pd=(2 * W_LNA) + (5 * (45.0n)) m=1 \
+        region=sat
+    N4 (net12 VDD net10 GND) nmos w=WN2_LNA l=45.0n as=WN2_LNA * 2.5 * (45.0n) \
+         ad=WN2_LNA * 2.5 * (45.0n) ps=(2 * WN2_LNA) + (5 * (45.0n)) pd=(2 * WN2_LNA) + (5 * (45.0n)) \
+         m=5 region=sat
+    N3 (net10 net9 net11 GND) nmos w=WN1_LNA l=45.0n as=WN1_LNA * 2.5 * (45.0n) \
+         ad=WN1_LNA * 2.5 * (45.0n) ps=(2 * WN1_LNA) + (5 * (45.0n)) pd=(2 * WN1_LNA) + (5 * (45.0n)) \
+         m=5 region=sat
+    N0 (net6 net3 net5 GND) nmos w=WN1_LNA l=45.0n as=WN1_LNA * 2.5 * (45.0n) \
+         ad=WN1_LNA * 2.5 * (45.0n) ps=(2 * WN1_LNA) + (5 * (45.0n)) pd=(2 * WN1_LNA) + (5 * (45.0n)) \
+         m=5 region=sat
+    N2 (net1 net1 0 GND) nmos w=W_LNA l=45.0n as=W_LNA * 2.5 * (45.0n) ad=W_LNA * 2.5 * (45.0n) \
+         ps=(2 * W_LNA) + (5 * (45.0n)) pd=(2 * W_LNA) + (5 * (45.0n)) m=1 \
+        region=sat
+    N1 (net7 VDD net6 GND) nmos w=WN2_LNA l=45.0n as=WN2_LNA * 2.5 * (45.0n) \
+         ad=WN2_LNA * 2.5 * (45.0n) ps=(2 * WN2_LNA) + (5 * (45.0n)) pd=(2 * WN2_LNA) + (5 * (45.0n)) \
+         m=5 region=sat
+    R5 (VDD net12) resistor r=R3_LNA
+    R4 (VDD net4) resistor r=R1_LNA
+    R3 (net4 net8) resistor r=R2_LNA
+    R2 (VDD net7) resistor r=R3_LNA
+    R1 (net1 net2) resistor r=R2_LNA
+    R0 (VDD net1) resistor r=R1_LNA
+    L5 (VDD net12) inductor l=Ld_LNA
+    L4 (net8 net9) inductor l=Lg_LNA
+    L3 (net11 0) inductor l=Ls_LNA
+    L2 (net5 0) inductor l=Ls_LNA
+    L1 (net2 net3) inductor l=Lg_LNA
+    L0 (VDD net7) inductor l=Ld_LNA
+    C5 (net12 Vout\-) capacitor c=C1_LNA
+    C4 (Vout\- 0) capacitor c=100f
+    C3 (Vin\- net8) capacitor c=C2_LNA
+    C2 (Vout\+ 0) capacitor c=100f
+    C1 (net7 Vout\+) capacitor c=C1_LNA
+    C0 (Vin\+ net2) capacitor c=C2_LNA
+    V1 (GND 0) vsource dc=0 type=dc
+    V0 (VDD 0) vsource dc=VDD type=dc
+ends LNA
+// End of subcircuit definition.
+
+// Library name: Receiver
+// Cell name: Receiver_System_IndividualMetrics
+// View name: schematic
+I1 (Mixer_OUT\+ Mixer_OUT\- net12 net13 Mixer_IN\+ Mixer_IN\-) \
+        Gilbert_Cell
+I2 (Amp_IN\+ Amp_IN\- Amp_OUT\+ Amp_OUT\-) Cascode
+I20 (net2 LNA_OUT\+ LNA_OUT\-) balun rin=50 rout=100 loss=0
+I7 (net11 net12 net13) balun rin=50 rout=100 loss=0
+I4 (IF_OUT Amp_OUT\+ Amp_OUT\-) balun rin=50 rout=100 loss=0
+I3 (net1 net3 net4) balun rin=50 rout=100 loss=0
+C11 (net4 LNA_IN\-) capacitor c=Cmatch_lna
+C10 (net3 LNA_IN\+) capacitor c=Cmatch_lna
+C7 (Amp_IN\- 0) capacitor c=Cf
+C6 (Amp_IN\+ 0) capacitor c=Cf
+C1 (LNA_OUT\- Mixer_IN\-) capacitor c=Cmatch
+C0 (LNA_OUT\+ Mixer_IN\+) capacitor c=Cmatch
+PORT2 (net11 0) port r=50 type=sine freq=flo dbm=plo fundname="LO"
+PORT0 (net1 0) port r=50 num=1 type=sine freq=fin dbm=pin pacmag=1 \
+        fundname="RF"
+PORT3 (net2 0) port r=50 type=dc
+PORT1 (IF_OUT 0) port r=50 num=2 type=dc
+L7 (LNA_IN\- 0) inductor l=Lmatch_lna
+L6 (LNA_IN\+ 0) inductor l=Lmatch_lna
+L1 (Mixer_IN\- 0) inductor l=Lmatch
+L0 (Mixer_IN\+ 0) inductor l=Lmatch
+R1 (Mixer_OUT\- Amp_IN\-) resistor r=Rf
+R0 (Mixer_OUT\+ Amp_IN\+) resistor r=Rf
+I0 (LNA_IN\+ LNA_IN\- LNA_OUT\+ LNA_OUT\-) LNA

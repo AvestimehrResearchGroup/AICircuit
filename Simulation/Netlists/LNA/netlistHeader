@@ -1,0 +1,7 @@
+// Generated for: spectre
+// Generated on: Jun  9 17:34:35 2024
+// Design library name: LNA
+// Design cell name: LNA_testbench
+// Design view name: schematic
+simulator lang=spectre
+global 0

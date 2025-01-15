@@ -1,0 +1,175 @@
+---
+circuit: CSVA
+parameters:
+    VDD: 0
+    Vgate: 0
+    Wn: 0
+    Rd: 0
+metrics:
+    Bandwidth: 0
+    PowerConsumption: 0
+    VoltageGain: 0
+ocean: /home/asal/Docker/Ocean
+oceandocker: /home/asal/Shared/Ocean
+dataset: Dataset
+---
+circuit: TSVA
+parameters:
+    WCS: 0
+    WN1: 0
+    WP1: 0
+    WNOUT: 0
+    WPOUT: 0
+    C0: 0
+    C1: 0
+metrics:
+    Bandwidth: 0
+    PowerConsumption: 0
+    VoltageGain: 0
+ocean: /home/asal/Docker/Ocean
+oceandocker: /home/asal/Shared/Ocean
+dataset: Dataset
+---
+circuit: CVA
+parameters:
+    Wbias: 0
+    Rd: 0
+    Wn1: 0
+    Wn2: 0
+metrics:
+    Bandwidth: 0
+    PowerConsumption: 0
+    VoltageGain: 0
+ocean: /home/asal/Docker/Ocean
+oceandocker: /home/asal/Shared/Ocean
+dataset: Dataset
+---
+circuit: VCO
+parameters:
+    C1: 0
+    L1: 0
+    Rp: 0
+    Wn: 0
+    Wn5: 0
+    Wn6: 0
+    Wvar: 0
+metrics:
+    OscillationFrequency: 0
+    PowerConsumption: 0
+    OutputPower: 0
+    PhaseNoise: 0
+    TuningRange: 0
+ocean: /home/asal/Docker/Ocean
+oceandocker: /home/asal/Shared/Ocean
+dataset: Dataset
+---
+circuit: Mixer
+parameters:
+    C: 0
+    R: 0
+    WLO: 0
+    WRF: 0
+metrics:
+    PowerConsumption: 0
+    IFVoltageSwing: 0
+    ConversionGain: 0
+    NoiseFigure: 0
+ocean: /home/asal/Docker/Ocean
+oceandocker: /home/asal/Shared/Ocean
+dataset: Dataset
+---
+circuit: PA
+parameters:
+    L1p: 0
+    L1s: 0
+    L3p: 0
+    L3s: 0
+    Lm: 0
+    Wn1: 0
+    Wn2: 0
+metrics:
+    LargeSignalPowerGain: 0
+    PAE: 0
+    DrainEfficiency: 0
+    PSAT: 0
+    PowerConsumption: 0
+ocean: /home/asal/Docker/Ocean
+oceandocker: /home/asal/Shared/Ocean
+dataset: Dataset
+---
+circuit: LNA
+parameters:
+    C1: 0
+    C2: 0
+    Ld: 0
+    Lg: 0
+    Ls: 0
+    WN1: 0
+    WN2: 0
+metrics:
+    GTMax: 0
+    S11Min: 0
+    NFMin: 0
+    Bandwidth: 0
+    PowerConsumption: 0
+ocean: /home/asal/Docker/Ocean
+oceandocker: /home/asal/Shared/Ocean
+dataset: Dataset
+---
+circuit: Transmitter
+parameters:
+    C1_VCO: 0
+    L1_VCO: 0
+    Rp_VCO: 0
+    Wn_VCO: 0
+    Wn6_VCO: 0
+    Wvar_VCO: 0
+    L1p_PA: 0
+    L1s_PA: 0
+    L3p_PA: 0
+    L3s_PA: 0
+    Wn1_PA: 0
+    Wn2_PA: 0
+metrics:
+    TuningRange_VCO: 0
+    PhaseNoise_VCO: 0
+    LargeSignal_PowerGain_PA: 0
+    DrainEfficiency_PA: 0
+    PAE_PA: 0
+    VoltageSwing: 0
+    OutputPower: 0
+    Bandwidth: 0
+    PowerConsumption: 0
+ocean: /home/asal/Docker/Ocean
+oceandocker: /home/asal/Shared/Ocean
+dataset: Dataset
+---
+circuit: Receiver
+parameters:
+    C1_LNA: 0
+    C2_LNA: 0
+    Ld_LNA: 0
+    Lg_LNA: 0
+    Ls_LNA: 0
+    WN1_LNA: 0
+    WN2_LNA: 0
+    C_Mixer: 0
+    R_Mixer: 0
+    WLO_Mixer: 0
+    WRF_Mixer: 0
+    Rd_Amp: 0
+    Wn1_Amp: 0
+    Wn2_Amp: 0
+metrics:
+    PowerGain_LNA: 0
+    NoiseFigure_LNA: 0
+    S11_LNA: 0
+    ConversionGain_Mixer: 0
+    VoltageSwing_Mixer: 0
+    VoltageGain_Amp: 0
+    NoiseFigure: 0
+    VoltageGain: 0
+    PowerConsumption: 0
+ocean: /home/asal/Docker/Ocean
+oceandocker: /home/asal/Shared/Ocean
+dataset: Dataset

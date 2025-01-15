@@ -1,0 +1,53 @@
+simulator( 'spectre )
+design(  "/home/asal/Shared/Netlists/VCO/netlist")
+resultsDir( "/home/asal/Shared/Results/VCO" )
+modelFile( 
+    '("/home/asal/Shared/Model/45n270AModels.sp" "")
+)
+analysis('tran ?stop "20n"  ?errpreset "conservative"  )
+analysis('hb ?tstabenvlp_autosteady ""  ?tstabenvlpstop ""  ?saveinit "yes"  
+		?autoharms ""  ?autotstab "yes"  ?oversample list("1")  ?fundfreqs list("(3.49G)")  
+		?maxharms list("10")  ?harmoutputlist nil  ?errpreset "conservative"  ?oscana t  
+		?p "/Vout+"  ?n "/Vout-"  ?oscic "lin"  ?oscmethod "onetier"  
+		?param "Vcont"  ?start "0"  ?stop "1.6"  ?sweepStep "0.1"  
+		?pinnode ""  ?ppv ""  )
+analysis('hbnoise ?sweeptype "relative"  ?relharmvec list("1")  ?start "10k"  
+		?stop "10M"  ?p "/Vout+"  ?n "/Vout-"  ?oprobe ""  
+		?noisetype "timeaverage"  ?noiseout list("pm")  ?noisetypeUI ""  ?noiseoutUI "PM"  
+		?ppv ""  )
+analysis('dc ?saveOppoint t  )
+desVar(	  "C1" 150f	)
+desVar(	  "L1" 4n	)
+desVar(	  "Rp" 2.2K	)
+desVar(	  "Vcont" 800m	)
+desVar(	  "Wn" 2u	)
+desVar(	  "Wn5" 11u	)
+desVar(	  "Wn6" 3.2u	)
+desVar(	  "Wvar" 4u	)
+envOption(
+	'analysisOrder  list("dc" "hb" "hbnoise" "tran") 
+)
+saveOption( 'pwr "all" )
+saveOption( 'save "all" )
+save( 'v "/Vout+" )
+converge( 'ic "/Vout+" "0" )
+converge( 'ic "/Vout-" "1.2" )
+temp( 27 ) 
+run()
+selectResult( 'dcOp )
+selectResult( 'tran )
+
+OscillationFrequency = ymax(freq(v("/Vout+" ?result "tran") "rising" ?xName "time" ?mode "auto" ?threshold 0.0))
+OutputPower = ymax(dbm(value(pvr('hb "/Vout+" "/Vout-" 50.0) 'Vcont 0)))
+PhaseNoise = value(leafValue(pn('hbnoise) "Vcont" 0.8) 1000000)
+TuningRange = (ymax(harmonic(xval(getData("/Vout+" ?result "hb_fd")) '1)) - ymin(harmonic(xval(getData("/Vout+" ?result "hb_fd")) '1)))
+PowerConsumption = getData(":pwr" ?result "dcOp")
+
+filePtr = outfile("./results.txt" "w")
+ocnPrint( ?output filePtr "Simulated performance ..." )
+ocnPrint( ?output filePtr ?numberNotation 'scientific ?numSpaces 1 "OscillationFrequency:" OscillationFrequency )
+ocnPrint( ?output filePtr ?numberNotation 'scientific ?numSpaces 1 "OutputPower:" OutputPower )
+ocnPrint( ?output filePtr ?numberNotation 'scientific ?numSpaces 1 "PhaseNoise:" PhaseNoise )
+ocnPrint( ?output filePtr ?numberNotation 'scientific ?numSpaces 1 "TuningRange:" TuningRange )
+ocnPrint( ?output filePtr ?numberNotation 'scientific ?numSpaces 1 "PowerConsumption:" PowerConsumption )
+close(filePtr)

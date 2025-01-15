@@ -1,0 +1,7 @@
+// Generated for: spectre
+// Generated on: Feb 14 05:08:52 2024
+// Design library name: Cascode
+// Design cell name: Cascode
+// Design view name: schematic
+simulator lang=spectre
+global 0
