@@ -5,6 +5,7 @@
 **AICircuit** is a comprehensive multi-level dataset and benchmark for developing and evaluating ML algorithms in analog and radio-frequency circuit design. AICircuit comprises seven commonly used basic circuits and two complex wireless transceiver systems composed of multiple circuit blocks, encompassing a wide array of design scenarios encountered in real-world applications. We extensively evaluate various ML algorithms on the dataset, revealing the potential of ML algorithms in learning the mapping from the design specifications to the desired circuit parameters. 
 
 📣 **Updates:** We've added a detailed guide on running simulations and using the Docker container! Check it out here: [SIM_GUIDE.md](./Simulation/SIM_GUIDE.md).
+
 📣 Check out our new paper [**Supervised Learning for Analog and RF Circuit Design: Benchmarks and Comparative Insights**](https://arxiv.org/abs/2501.11839).
 
 ## 📖 Table of Contents
@@ -118,7 +119,7 @@ If you use AICircuit in a research paper, please cite our works as follows:
 ```bibtex
 @article{Mehradfar2024AICircuit,
       title={AICircuit: A Multi-Level Dataset and Benchmark for AI-Driven Analog Integrated Circuit Design}, 
-      author={Asal Mehradfar and Xuzhe Zhao and Yue Niu and Sara Babakniya and Mahdi Alesheikh and Hamidreza Aghasi and Salman Avestimehr},
+      author={Mehradfar, Asal and Zhao, Xuzhe and Niu, Yue and Babakniya, Sara and Alesheikh, Mahdi and Aghasi, Hamidreza and Avestimehr, Salman},
       journal={Machine Learning and the Physical Sciences Workshop @ NeurIPS},
       year={2024}
 }
