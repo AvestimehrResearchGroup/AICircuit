@@ -127,10 +127,10 @@ If you use AICircuit in a research paper, please cite our works as follows:
 
 ```bibtex
 @article{Mehradfar2025Supervised,
-  title={Supervised Learning for Analog and RF Circuit Design: Benchmarks and Comparative Insights},
-  author={Mehradfar, Asal and Zhao, Xuzhe and Niu, Yue and Babakniya, Sara and Alesheikh, Mahdi and Aghasi, Hamidreza and Avestimehr, Salman},
-  journal={arXiv preprint arXiv:2501.11839},
-  year={2025}
+      title={Supervised Learning for Analog and RF Circuit Design: Benchmarks and Comparative Insights},
+      author={Mehradfar, Asal and Zhao, Xuzhe and Niu, Yue and Babakniya, Sara and Alesheikh, Mahdi and Aghasi, Hamidreza and Avestimehr, Salman},
+      journal={arXiv preprint arXiv:2501.11839},
+      year={2025}
 }
 ```
 
